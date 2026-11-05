@@ -1,0 +1,68 @@
+{
+  "name": "google-maps-scraper",
+  "version": "1.0.0",
+  "description": "CLI that scrapes Google Maps business listings (name, type, address, phone, website and coordinates) by search term and region, with parallel phone lookup and JSON output.",
+  "main": "./dist/main.js",
+  "bin": {
+    "google-maps-scraper": "./dist/main.js"
+  },
+  "files": [
+    "dist",
+    "public"
+  ],
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "find-chrome": "node find-chrome.mjs",
+    "build": "tsc6 --noEmit && tsup",
+    "postbuild": "node -e \"require('fs').chmodSync('dist/main.js', 0o755)\"",
+    "start": "node dist/main.js",
+    "prepublishOnly": "npm run build",
+    "type-check": "tsc6 --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write src \"*.mjs\" \"*.md\""
+  },
+  "keywords": [
+    "google-maps",
+    "scraper",
+    "puppeteer",
+    "cli",
+    "lead-generation"
+  ],
+  "author": {
+    "name": "Bruno César",
+    "email": "bruceskills@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruceskills/google-maps-scraper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bruceskills/google-maps-scraper/issues"
+  },
+  "homepage": "https://github.com/bruceskills/google-maps-scraper#readme",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.72.1"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "dotenv": "^18.0.9",
+    "puppeteer": "^25.16.0",
+    "winston": "^3.19.0"
+  }
+}
